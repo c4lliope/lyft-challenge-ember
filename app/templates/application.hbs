@@ -1,37 +1,50 @@
-<header class="_container">
-<p class="site-name">Rideshare Resolver</p>
-</header>
-<div class="route-form route-form-1 clearfix">
-  <div class="location-form location-form-1 clearfix">
-    <input class="address" placeholder="Address" type="text">
-    <img class="image" src="assets/location.svg">
-    <input class="latitude" placeholder="Latitude" type="text">
-    <input class="longitude" placeholder="Longitude" type="text">
+<div class="header">
+  <div class="container">
+    <span class="site-name">Rideshare Resolver</span>
   </div>
-  <p class="driver-name">Driver A</p>
-  <div class="location-form location-form-2 clearfix">
-    <input class="address" placeholder="Address" type="text">
-    <img class="image" src="assets/location.svg">
-    <input class="latitude" placeholder="Latitude" type="text">
-    <input class="longitude" placeholder="Longitude" type="text">
-  </div>
-  <img class="arrow arrow-1" src="assets/arrow.svg">
-  <p class="winner-label">If Driver A gives driver B a lift, the route will be 2 miles (23%) shorter</p>
 </div>
-<div class="route-form route-form-2 clearfix">
-  <div class="location-form location-form-3 clearfix">
-    <input class="address" placeholder="Address" type="text">
-    <img class="image" src="assets/location.svg">
-    <input class="latitude" placeholder="Latitude" type="text">
-    <input class="longitude" placeholder="Longitude" type="text">
+
+<div class="container">
+  <div class="route">
+    <div class="inputs">
+      <div class="origin location">
+        <input class="address" placeholder="Address" type="text">
+        <img class="pinpoint" src="assets/location.svg">
+        <input class="latitude" placeholder="Latitude" type="text">
+        <input class="longitude" placeholder="Longitude" type="text">
+      </div>
+      <div class="middle">
+        <p class="driver-name">Driver A</p>
+        <img class="arrow" src="assets/arrow.svg">
+      </div>
+      <div class="destination location">
+        <input class="address" placeholder="Address" type="text">
+        <img class="pinpoint" src="assets/location.svg">
+        <input class="latitude" placeholder="Latitude" type="text">
+        <input class="longitude" placeholder="Longitude" type="text">
+      </div>
+    </div>
+    <div class="winner">If Driver A gives driver B a lift, the route will be 2 miles (23%) shorter</div>
   </div>
-  <p class="driver-name">Driver B</p>
-  <div class="location-form location-form-4 clearfix">
-    <input class="address" placeholder="Address" type="text">
-    <img class="image" src="assets/location.svg">
-    <input class="latitude" placeholder="Latitude" type="text">
-    <input class="longitude" placeholder="Longitude" type="text">
+  <div class="route">
+    <div class="inputs">
+      <div class="origin location">
+        <input class="address" placeholder="Address" type="text">
+        <img class="pinpoint" src="assets/location.svg">
+        <input class="latitude" placeholder="Latitude" type="text">
+        <input class="longitude" placeholder="Longitude" type="text">
+      </div>
+      <div class="middle">
+        <p class="driver-name">Driver B</p>
+        <img class="arrow" src="assets/arrow.svg">
+      </div>
+      <div class="destination location">
+        <input class="address" placeholder="Address" type="text">
+        <img class="pinpoint" src="assets/location.svg">
+        <input class="latitude" placeholder="Latitude" type="text">
+        <input class="longitude" placeholder="Longitude" type="text">
+      </div>
+    </div>
   </div>
-  <img class="arrow arrow-2" src="assets/arrow.svg">
+  <div class="map"></div>
 </div>
-<div class="map"></div>
