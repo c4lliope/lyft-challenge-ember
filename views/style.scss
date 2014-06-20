@@ -51,6 +51,9 @@ input {
         @include span-columns(0.6 of 5);
         margin-top: $gutter;
       }
+      &:nth-child(6) {
+        @include omega;
+      }
     }
     .middle {
       @include span-columns(2 of 12);
