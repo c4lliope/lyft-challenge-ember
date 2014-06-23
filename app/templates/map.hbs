@@ -1,13 +1,56 @@
 <div id="map" class="map"></div>
 
 <script>
+  var directionsDisplay1;
+  var directionsDisplay2;
+  var directionsService = new google.maps.DirectionsService();
+  var map;
+
   function initialize() {
+    directionsDisplay1 = new google.maps.DirectionsRenderer({polylineOptions: { strokeColor: '#FF0000' }});
+    directionsDisplay2 = new google.maps.DirectionsRenderer({polylineOptions: { strokeColor: '#0000FF' }});
+    var chicago = new google.maps.LatLng(41.850033, -87.6500523);
     var mapOptions = {
-      center: new google.maps.LatLng(-34.397, 150.644),
-       zoom: 8
-    };
-    var map = new google.maps.Map(document.getElementById("map"),
-      mapOptions);
+      zoom:7,
+      center: chicago
+    }
+    map = new google.maps.Map(document.getElementById("map"), mapOptions);
+    directionsDisplay1.setMap(map);
+    directionsDisplay2.setMap(map);
+    calcRoute();
   }
+
+  function calcRoute() {
+    var start1 = "philadelphia, pa";
+    var end1 = "san francisco, ca";
+    var request1 = {
+      origin:start1,
+      destination:end1,
+      travelMode: google.maps.TravelMode.DRIVING
+    };
+    directionsService.route(request1, function(result, status) {
+      if (status == google.maps.DirectionsStatus.OK) {
+        directionsDisplay1.setDirections(result);
+      } else {
+      alert('ohno 1');
+      }
+    });
+
+    var start2 = "houston, tx";
+    var end2 = "east lansing, mi";
+    var request2 = {
+      origin:start2,
+      destination:end2,
+      travelMode: google.maps.TravelMode.DRIVING
+    };
+    directionsService.route(request2, function(result, status) {
+      if (status == google.maps.DirectionsStatus.OK) {
+        directionsDisplay2.setDirections(result);
+      } else {
+      alert('ohno 2');
+      }
+    });
+  }
+
   google.maps.event.addDomListener(window, 'load', initialize);
 </script>
