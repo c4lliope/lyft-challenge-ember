@@ -7,5 +7,7 @@
     </div>
     {{render "location" destination}}
   </div>
-  <div class="winner">If Driver A gives driver B a lift, the route will be 2 miles (23%) shorter</div>
+  {{#if winner}}
+  <div class="winner">{{winnerText}}</div>
+  {{/if}}
 </div>

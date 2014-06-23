@@ -13,7 +13,66 @@ export default Ember.Controller.extend({
                           var destination = routeB.get('destination').get('addressString');
                           displayRoute(directionsDisplayB, origin, destination);
 
+                          this.send('arbitrate');
+
                           /* TODO update viewport to include all four points */
+                        },
+       arbitrate: function() {
+                    var routeA = this.get('routeA');
+                    var routeB = this.get('routeB');
+
+                    routeA.set('winner', false);
+                    routeB.set('winner', false);
+
+                    var originA = routeA.get('origin').get('addressString');
+                    var destinationA = routeA.get('destination').get('addressString');
+                    var originB = routeB.get('origin').get('addressString');
+                    var destinationB = routeB.get('destination').get('addressString');
+
+                    var service = new google.maps.DistanceMatrixService();
+                    service.getDistanceMatrix(
+                        {
+                          origins: [originA, originB, destinationA, destinationB],
+                          destinations: [originA, originB, destinationA, destinationB],
+                          travelMode: google.maps.TravelMode.DRIVING,
+                          unitSystem: google.maps.UnitSystem.IMPERIAL,
+                          durationInTraffic: false,
+                          avoidHighways: false,
+                          avoidTolls: false
+                        }, callback);
+
+                    function callback(response, status) {
+                      if (status == google.maps.DistanceMatrixStatus.OK) {
+                        var origins = response.originAddresses;
+                        var destinations = response.destinationAddresses;
+
+                        for (var i = 0; i < origins.length; i++) {
+                          var results = response.rows[i].elements;
+                          for (var j = 0; j < results.length; j++) {
+                            var element = results[j];
+                            var distance = element.distance.text;
+                            var duration = element.duration.text;
+                            var from = origins[i];
+                            var to = destinations[j];
+                            console.log("From " + from + " to " + to + " is " + distance);
+                          }
                         }
+
+                        var aPickUpBDistance = response.rows[0].elements[1].distance.value + response.rows[1].elements[3].distance.value + response.rows[3].elements[2].distance.value;
+                        console.log("a picks up b: " + aPickUpBDistance);
+                        var bPickUpADistance = response.rows[1].elements[0].distance.value + response.rows[0].elements[2].distance.value + response.rows[2].elements[3].distance.value;
+                        console.log("b picks up a: " + bPickUpADistance);
+                        var winner, loser;
+                        if(aPickUpBDistance < bPickUpADistance) {
+                          winner = "A"; loser = "B";
+                          routeA.set('winner', true);
+                        } else {
+                          winner = "B"; loser = "A";
+                          routeB.set('winner', true);
+                        }
+                        console.log("It's shorter if " + winner + " picks up " + loser);
+                      }
+                    }
+                  }
            }
 });
