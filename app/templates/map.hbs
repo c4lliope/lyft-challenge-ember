@@ -1,20 +1,20 @@
 <div id="map" class="map"></div>
 
 <script>
+  var directionsDisplayA;
+  var directionsDisplayB;
+
   function initialize() {
-    var directionsDisplay1 = new google.maps.DirectionsRenderer({polylineOptions: { strokeColor: '#FF0000' }});
-    var directionsDisplay2 = new google.maps.DirectionsRenderer({polylineOptions: { strokeColor: '#0000FF' }});
+    directionsDisplayA = new google.maps.DirectionsRenderer({polylineOptions: { strokeColor: '#FF0000' }})
+    directionsDisplayB = new google.maps.DirectionsRenderer({polylineOptions: { strokeColor: '#0000FF' }})
     var chicago = new google.maps.LatLng(41.850033, -87.6500523);
     var mapOptions = {
       zoom:7,
       center: chicago
     }
     var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-    directionsDisplay1.setMap(map);
-    directionsDisplay2.setMap(map);
-
-    displayRoute(directionsDisplay1, "philadelphia, pa", "san francisco, ca");
-    displayRoute(directionsDisplay2, "houston, tx", "east lansing, mi");
+    directionsDisplayA.setMap(map);
+    directionsDisplayB.setMap(map);
   }
 
   function displayRoute(directionsDisplay, start, end) {
@@ -27,8 +27,9 @@
     directionsService.route(request, function(result, status) {
       if (status == google.maps.DirectionsStatus.OK) {
         directionsDisplay.setDirections(result);
-      } else {
-      alert('ohno: ' + start + " to " + end);
+        } else {
+        /* TODO Gracefully handle errors */
+        alert('ohno: ' + start + " to " + end);
       }
     });
   }
