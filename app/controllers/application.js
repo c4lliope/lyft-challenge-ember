@@ -15,8 +15,17 @@ export default Ember.Controller.extend({
 
                           this.send('arbitrate');
 
-                          /* TODO update viewport to include all four points */
+                          this.send('center_map');
                         },
+
+       center_map: function() {
+         var points = [this.get('routeA').get('origin'),
+         this.get('routeA').get('destination'),
+         this.get('routeB').get('origin'),
+         this.get('routeB').get('destination')];
+         centerMap(points);
+       },
+
        arbitrate: function() {
                     var routeA = this.get('routeA');
                     var routeB = this.get('routeB');
@@ -33,12 +42,12 @@ export default Ember.Controller.extend({
                     service.getDistanceMatrix(
                         {
                           origins: [originA, originB, destinationA, destinationB],
-                          destinations: [originA, originB, destinationA, destinationB],
-                          travelMode: google.maps.TravelMode.DRIVING,
-                          unitSystem: google.maps.UnitSystem.IMPERIAL,
-                          durationInTraffic: false,
-                          avoidHighways: false,
-                          avoidTolls: false
+                      destinations: [originA, originB, destinationA, destinationB],
+                      travelMode: google.maps.TravelMode.DRIVING,
+                      unitSystem: google.maps.UnitSystem.IMPERIAL,
+                      durationInTraffic: false,
+                      avoidHighways: false,
+                      avoidTolls: false
                         }, callback);
 
                     function callback(response, status) {
@@ -54,7 +63,7 @@ export default Ember.Controller.extend({
                             var duration = element.duration.text;
                             var from = origins[i];
                             var to = destinations[j];
-                            console.log("From " + from + " to " + to + " is " + distance);
+                            //console.log("From " + from + " to " + to + " is " + distance);
                           }
                         }
 
