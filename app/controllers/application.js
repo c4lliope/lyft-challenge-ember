@@ -62,15 +62,20 @@ export default Ember.Controller.extend({
                         console.log("b picks up a: " + bPickUpADistance);
 
                         var winner, loser;
+                        var winnerDistance, loserDistance;
                         if(aPickUpBDistance < bPickUpADistance) {
                           winner = "A"; loser = "B";
                           routeA.set('winner', true);
+                          winnerDistance = aPickUpBDistance;
+                          loserDistance = bPickUpADistance;
                         } else {
                           winner = "B"; loser = "A";
                           routeB.set('winner', true);
+                          winnerDistance = bPickUpADistance;
+                          loserDistance = aPickUpBDistance;
                         }
                         self.send('drawPickupDropoffLegs', winner, loser);
-                        console.log("It's shorter if " + winner + " picks up " + loser);
+                        self.send('setWinnerMessage', winner, loser, winnerDistance, loserDistance);
                       }
                     }
                   },
@@ -86,6 +91,19 @@ export default Ember.Controller.extend({
                                     winner.get('destination').get('addressString'));
 
                                 this.send('centerMapOnRoutePoints');
-                              }
+                              },
+       setWinnerMessage: function(winnerLetter, loserLetter, winnerDistance, loserDistance) {
+                           var winner = this.get('route'+winnerLetter);
+                           var loser = this.get('route'+loserLetter);
+
+                           var difference = loserDistance - winnerDistance;
+                           var difference_miles = Number((difference / 1609.34).toFixed(1));
+
+                           var message = "If " + winner.get('driverName') +
+                             " picks up " + loser.get('driverName') +
+                             ", the drive will be " + difference_miles + " miles shorter."
+                             console.log(message);
+                           winner.set('winnerText', message);
+                         }
            }
 });
