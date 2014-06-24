@@ -8,10 +8,10 @@
   var map;
 
   function initialize() {
-    directionsDisplayA = new google.maps.DirectionsRenderer({polylineOptions: { strokeColor: '#FF0000' }})
-    directionsDisplayB = new google.maps.DirectionsRenderer({polylineOptions: { strokeColor: '#0000FF' }})
-    directionsDisplayPickup = new google.maps.DirectionsRenderer({polylineOptions: { strokeColor: '#00FF00', opacity: 0.5 }})
-    directionsDisplayDropoff = new google.maps.DirectionsRenderer({polylineOptions: { strokeColor: '#00FF00', opacity: 0.5 }})
+    directionsDisplayA = new google.maps.DirectionsRenderer({preserveViewport: true, polylineOptions: { strokeColor: '#FF0000' }})
+    directionsDisplayB = new google.maps.DirectionsRenderer({preserveViewport: true, polylineOptions: { strokeColor: '#0000FF' }})
+    directionsDisplayPickup = new google.maps.DirectionsRenderer({preserveViewport: true, suppressMarkers: true, polylineOptions: { strokeColor: '#00FF00', opacity: 0.5 }})
+    directionsDisplayDropoff = new google.maps.DirectionsRenderer({preserveViewport: true, suppressMarkers: true, polylineOptions: { strokeColor: '#00FF00', opacity: 0.5 }})
     var sanFran = new google.maps.LatLng(37.802139, -122.41874);
     var mapOptions = {
       zoom: 12,
@@ -22,6 +22,7 @@
     directionsDisplayB.setMap(map);
     directionsDisplayPickup.setMap(map);
     directionsDisplayDropoff.setMap(map);
+    gelocatorRequestsRemaining = 4;
   }
 
   function displayRoute(directionsDisplay, start, end) {
@@ -42,17 +43,18 @@
   }
 
   var latLngBounds;
-  var ajaxCallsRemaining;
+  var gelocatorRequestsRemaining;
+
   function centerMap(points) {
     latLngBounds = new google.maps.LatLngBounds();
-    ajaxCallsRemaining = 4;
+    gelocatorRequestsRemaining = 4;
 
     for (var i = 0; i < 4; i++) {
       var point = points[i];
       var googlePoint;
       if(point.get('latLong')) {
         latLngBounds.extend(new google.maps.LatLng(point.get('latitude'), point.get('longitude')));
-        --ajaxCallsRemaining;
+        --gelocatorRequestsRemaining;
         centerMapIfFinished();
         } else {
         var geocoder = new google.maps.Geocoder();
@@ -61,7 +63,7 @@
         geocoder.geocode(request, function(result, status) {
           latLngBounds.extend(result[0].geometry.location);
 
-          --ajaxCallsRemaining;
+          --gelocatorRequestsRemaining;
           centerMapIfFinished();
         });
       }
@@ -69,9 +71,10 @@
   }
 
   function centerMapIfFinished() {
-    if (ajaxCallsRemaining <= 0) {
+    if (gelocatorRequestsRemaining <= 0) {
       map.fitBounds(latLngBounds);
       map.setZoom(map.getZoom()-1);
+      gelocatorRequestsRemaining = 4;
     }
   }
 

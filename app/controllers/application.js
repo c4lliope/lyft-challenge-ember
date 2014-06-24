@@ -14,13 +14,15 @@ export default Ember.Controller.extend({
                           displayRoute(directionsDisplayB, origin, destination);
 
                           this.send('arbitrate');
+                        },
 
-                     var points = [this.get('routeA').get('origin'),
+       centerMapOnRoutePoints: function() {
+                                 var points = [this.get('routeA').get('origin'),
        this.get('routeA').get('destination'),
        this.get('routeB').get('origin'),
        this.get('routeB').get('destination')];
-                     centerMap(points);
-                        },
+                                 centerMap(points);
+                               },
 
        arbitrate: function() {
                     var routeA = this.get('routeA');
@@ -47,7 +49,6 @@ export default Ember.Controller.extend({
                         }, callback);
 
                     var self=this;
-
                     function callback(response, status) {
                       if (status == google.maps.DistanceMatrixStatus.OK) {
                         var aPickUpBDistance = response.rows[0].elements[1].distance.value +
@@ -83,6 +84,8 @@ export default Ember.Controller.extend({
                                 displayRoute(directionsDisplayDropoff,
                                     loser.get('destination').get('addressString'),
                                     winner.get('destination').get('addressString'));
+
+                                this.send('centerMapOnRoutePoints');
                               }
            }
 });
