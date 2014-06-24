@@ -19,12 +19,12 @@ export default Ember.Controller.extend({
                         },
 
        center_map: function() {
-         var points = [this.get('routeA').get('origin'),
-         this.get('routeA').get('destination'),
-         this.get('routeB').get('origin'),
-         this.get('routeB').get('destination')];
-         centerMap(points);
-       },
+                     var points = [this.get('routeA').get('origin'),
+       this.get('routeA').get('destination'),
+       this.get('routeB').get('origin'),
+       this.get('routeB').get('destination')];
+                     centerMap(points);
+                   },
 
        arbitrate: function() {
                     var routeA = this.get('routeA');
@@ -75,9 +75,13 @@ export default Ember.Controller.extend({
                         if(aPickUpBDistance < bPickUpADistance) {
                           winner = "A"; loser = "B";
                           routeA.set('winner', true);
+                          displayRoute(directionsDisplayPickup, routeA.get('origin').get('addressString'), routeB.get('origin').get('addressString'));
+                          displayRoute(directionsDisplayDropoff, routeB.get('destination').get('addressString'), routeA.get('destination').get('addressString'));
                         } else {
                           winner = "B"; loser = "A";
                           routeB.set('winner', true);
+                          displayRoute(directionsDisplayPickup, routeB.get('origin').get('addressString'), routeA.get('origin').get('addressString'));
+                          displayRoute(directionsDisplayDropoff, routeA.get('destination').get('addressString'), routeB.get('destination').get('addressString'));
                         }
                         console.log("It's shorter if " + winner + " picks up " + loser);
                       }

@@ -3,11 +3,15 @@
 <script>
   var directionsDisplayA;
   var directionsDisplayB;
+  var directionsDisplayPickup;
+  var directionsDisplayDropoff;
   var map;
 
   function initialize() {
     directionsDisplayA = new google.maps.DirectionsRenderer({polylineOptions: { strokeColor: '#FF0000' }})
     directionsDisplayB = new google.maps.DirectionsRenderer({polylineOptions: { strokeColor: '#0000FF' }})
+    directionsDisplayPickup = new google.maps.DirectionsRenderer({polylineOptions: { strokeColor: '#00FF00', opacity: 0.5 }})
+    directionsDisplayDropoff = new google.maps.DirectionsRenderer({polylineOptions: { strokeColor: '#00FF00', opacity: 0.5 }})
     var sanFran = new google.maps.LatLng(37.802139, -122.41874);
     var mapOptions = {
       zoom: 12,
@@ -16,6 +20,8 @@
     map = new google.maps.Map(document.getElementById("map"), mapOptions);
     directionsDisplayA.setMap(map);
     directionsDisplayB.setMap(map);
+    directionsDisplayPickup.setMap(map);
+    directionsDisplayDropoff.setMap(map);
   }
 
   function displayRoute(directionsDisplay, start, end) {
