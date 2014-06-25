@@ -1,10 +1,9 @@
 <div class="route">
   <div class="inputs">
+    <img class="car" alt="car-icon" src="assets/car.svg">
+    {{input value=driverName class="driver-name"}}
+
     {{input value=origin action="updateMap" class="location origin" type="text" placeholder="Origin"}}
-    <div class="middle">
-      <img class="arrow" src="assets/arrow.svg">
-      {{input value=driverName class="driver-name"}}
-    </div>
     {{input value=destination action="updateMap" class="location destination" type="text" placeholder="Destination"}}
   </div>
   {{#if winner}}

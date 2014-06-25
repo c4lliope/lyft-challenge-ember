@@ -1,17 +1,24 @@
 @import 'bourbon/bourbon';
 @import 'neat/neat';
 
+$white: rgb(249, 244, 235);
+$green: rgb(0, 180, 174);
+$pink: rgb(229, 99, 133);
+
 html, body {
   margin: 0;
 }
 
 body {
   font: 400 1em/1.38 Helvetica;
+  background-color: $white;
+  font-family: 'Adelle Sans';
 }
 
 .header {
   width: 100%;
-  background-color: rgb(222, 222, 222);
+  background-color: $green;
+  color: #FFFFFF;
   .site-name {
     font: normal 2.375em/1.38 Bree-Regular;
   }
@@ -23,52 +30,62 @@ body {
 }
 
 input {
-  background-color: rgb(242, 242, 242);
+  background-color: #FFFFFF;
+  font-family: 'Adelle Sans';
+  font-size: 1em;
+  border: none;
   display: block;
   float: left;
   width: 37.0405497729%;
-  height: 2.846em;
   margin-top: $gutter;
-  padding: 0 0.769em;
-  font-size: 0.813em;
+  padding: $gutter / 2;
   font-weight: 400;
-  line-height: 1.38;
   color: rgb(0, 0, 0);
 }
 
 .routes {
-  @include span-columns(3 of 12);
+  @include span-columns(4 of 12);
   .route {
+    margin-bottom: $gutter;
     @include fill-parent;
+    padding: $gutter;
+    &:nth-child(2) {
+      border: 3px solid $green;
+      .winner { background-color: $green; }
+    }
+    &:nth-child(5) {
+      border: 3px solid $pink;
+      .winner { background-color: $pink; }
+    }
     .inputs {
       @include fill-parent;
       input { margin-left: 0; }
       .location {
         @include fill-parent;
       }
-      .middle {
-        @include fill-parent;
-        .arrow {
-          @include span-columns(0.5 of 3);
-          display: block;
-          -webkit-transform: rotate(90deg);
-        }
-        .driver-name {
-          @include span-columns(2 of 3);
-        }
+      .car {
+        @include span-columns(1 of 4);
+        margin-top: .6em;
+      }
+      .driver-name {
+        @include span-columns(3 of 4);
+        @include omega;
+        margin-top: 0;
       }
     @include clearfix;
     }
     .winner {
       @include fill-parent;
-      padding-top: $gutter;
+      margin-top: $gutter;
+      padding: $gutter / 2;
       text-align: center;
+      color: $white;
     }
   }
 }
 
 .map {
-  @include span-columns(9 of 12);
+  @include span-columns(8 of 12);
   @include omega;
   height: 35em;
 }
