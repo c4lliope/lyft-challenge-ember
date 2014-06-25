@@ -29,18 +29,18 @@ body {
   @include outer-container;
 }
 
-input {
-  background-color: #FFFFFF;
+input, label {
+  background-color: $white;
   font-family: 'Adelle Sans';
   font-size: 1em;
   border: none;
   display: block;
-  float: left;
-  width: 37.0405497729%;
   margin-top: $gutter;
-  padding: $gutter / 2;
+  margin: $gutter/2 0;
+  margin-top: $gutter;
   font-weight: 400;
   color: rgb(0, 0, 0);
+  outline: none;
 }
 
 .routes {
@@ -52,25 +52,39 @@ input {
     &:nth-child(2) {
       border: 3px solid $green;
       .winner { background-color: $green; }
+      input {
+        color: $green;
+        border-bottom: 1px dotted $green;
+      }
     }
     &:nth-child(5) {
       border: 3px solid $pink;
       .winner { background-color: $pink; }
+      input {
+        color: $pink;
+        border-bottom: 1px dotted $pink;
+      }
     }
     .inputs {
       @include fill-parent;
-      input { margin-left: 0; }
-      .location {
-        @include fill-parent;
-      }
-      .car {
-        @include span-columns(1 of 4);
-        margin-top: .6em;
+      .driver-icon {
+        display: inline-block;
+        @include span-columns(0.8 of 4);
+        @include shift(0.2);
       }
       .driver-name {
+        margin-top: $gutter/2;
+      }
+      label {
+        @include span-columns(1 of 4);
+        text-align: right;
+        padding-right: 0;
+      }
+      input {
         @include span-columns(3 of 4);
         @include omega;
-        margin-top: 0;
+        text-overflow: ellipsis;
+        margin-left: 0;
       }
     @include clearfix;
     }

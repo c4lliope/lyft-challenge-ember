@@ -5,5 +5,6 @@ export default DS.Model.extend({
   origin: DS.attr('string'),
        destination: DS.attr('string'),
        winner: DS.attr('boolean'),
-       winnerText: DS.attr('string')
+       winnerText: DS.attr('string'),
+       iconPath: DS.attr('string')
 });

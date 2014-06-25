@@ -1,9 +1,11 @@
 <div class="route">
   <div class="inputs">
-    <img class="car" alt="car-icon" src="assets/car.svg">
+    <img class="driver-icon" alt="driver-icon" {{bind-attr src=iconPath}}>
     {{input value=driverName class="driver-name"}}
 
+    <label>From</label>
     {{input value=origin action="updateMap" class="location origin" type="text" placeholder="Origin"}}
+    <label>To</label>
     {{input value=destination action="updateMap" class="location destination" type="text" placeholder="Destination"}}
   </div>
   {{#if winner}}
