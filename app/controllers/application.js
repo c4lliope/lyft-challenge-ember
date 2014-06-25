@@ -4,13 +4,13 @@ export default Ember.Controller.extend({
   actions: {
              updateMap: function() {
                           var routeA = this.get('routeA');
-                          var origin = routeA.get('origin').get('addressString');
-                          var destination = routeA.get('destination').get('addressString');
+                          var origin = routeA.get('origin').get('address');
+                          var destination = routeA.get('destination').get('address');
                           displayRoute(directionsDisplayA, origin, destination);
 
                           var routeB = this.get('routeB');
-                          var origin = routeB.get('origin').get('addressString');
-                          var destination = routeB.get('destination').get('addressString');
+                          var origin = routeB.get('origin').get('address');
+                          var destination = routeB.get('destination').get('address');
                           displayRoute(directionsDisplayB, origin, destination);
 
                           this.send('arbitrate');
@@ -31,10 +31,10 @@ export default Ember.Controller.extend({
                     routeA.set('winner', false);
                     routeB.set('winner', false);
 
-                    var originA = routeA.get('origin').get('addressString');
-                    var destinationA = routeA.get('destination').get('addressString');
-                    var originB = routeB.get('origin').get('addressString');
-                    var destinationB = routeB.get('destination').get('addressString');
+                    var originA = routeA.get('origin').get('address');
+                    var destinationA = routeA.get('destination').get('address');
+                    var originB = routeB.get('origin').get('address');
+                    var destinationB = routeB.get('destination').get('address');
 
                     var service = new google.maps.DistanceMatrixService();
                     service.getDistanceMatrix(
@@ -84,11 +84,11 @@ export default Ember.Controller.extend({
                                 var loser = this.get('route'+loserLetter);
 
                                 displayRoute(directionsDisplayPickup,
-                                    winner.get('origin').get('addressString'),
-                                    loser.get('origin').get('addressString'));
+                                    winner.get('origin').get('address'),
+                                    loser.get('origin').get('address'));
                                 displayRoute(directionsDisplayDropoff,
-                                    loser.get('destination').get('addressString'),
-                                    winner.get('destination').get('addressString'));
+                                    loser.get('destination').get('address'),
+                                    winner.get('destination').get('address'));
 
                                 this.send('centerMapOnRoutePoints');
                               },

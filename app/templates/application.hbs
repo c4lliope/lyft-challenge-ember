@@ -5,8 +5,10 @@
 </div>
 
 <div class="container">
-  {{ render "route" routeA }}
-  {{ render "route" routeB }}
-  <button {{action 'updateMap'}}>Update Map</button>
+  <div class="routes">
+    {{ render "route" routeA }}
+    {{ render "route" routeB }}
+  </div>
   {{ render "map" map }}
+  <button {{action 'updateMap'}}>Update Map</button>
 </div>

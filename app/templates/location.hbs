@@ -1,10 +1,3 @@
 <div class="location">
-  <img class="pinpoint" src="assets/location.svg">
-  {{input type="checkbox" name="toggleLatLong" checked=latLong}}
-  {{#if latLong}}
-    {{input value=latitude action="updateMap" class="latitude" placeholder="Latitude" type="text"}}
-    {{input value=longitude action="updateMap" class="longitude" placeholder="Longitude" type="text"}}
-  {{else}}
-    {{input value=address action="updateMap" class="address" type="text" placeholder="Address"}}
-  {{/if}}
+  {{input value=address action="updateMap" class="address" type="text" placeholder="Address"}}
 </div>

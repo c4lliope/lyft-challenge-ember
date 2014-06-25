@@ -52,28 +52,21 @@
     for (var i = 0; i < 4; i++) {
       var point = points[i];
       var googlePoint;
-      if(point.get('latLong')) {
-        latLngBounds.extend(new google.maps.LatLng(point.get('latitude'), point.get('longitude')));
+      var geocoder = new google.maps.Geocoder();
+      var request = { address: point.get('address') };
+
+      geocoder.geocode(request, function(result, status) {
+        latLngBounds.extend(result[0].geometry.location);
+
         --gelocatorRequestsRemaining;
         centerMapIfFinished();
-        } else {
-        var geocoder = new google.maps.Geocoder();
-        var request = { address: point.get('address') };
-
-        geocoder.geocode(request, function(result, status) {
-          latLngBounds.extend(result[0].geometry.location);
-
-          --gelocatorRequestsRemaining;
-          centerMapIfFinished();
-        });
-      }
+      });
     }
   }
 
   function centerMapIfFinished() {
     if (gelocatorRequestsRemaining <= 0) {
       map.fitBounds(latLngBounds);
-      map.setZoom(map.getZoom()-1);
       gelocatorRequestsRemaining = 4;
     }
   }

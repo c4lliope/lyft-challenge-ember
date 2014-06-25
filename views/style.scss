@@ -36,57 +36,40 @@ input {
   color: rgb(0, 0, 0);
 }
 
+.routes {
+  @include span-columns(3 of 12);
 .route {
+  @include fill-parent;
   .inputs {
     @include fill-parent;
     input { margin-left: 0; }
     .location {
-      @include span-columns(5 of 12);
+      @include fill-parent;
       .address { @include fill-parent; }
-      .latitude, .longitude { @include span-columns(2 of 5); }
-      .longitude { @include omega; }
-      .pinpoint {
-        display: block;
-        @include shift(0.4 of 5);
-        @include span-columns(0.6 of 5);
-        margin-top: $gutter;
-      }
-      &:nth-child(6) {
-        @include omega;
-      }
     }
     .middle {
-      @include span-columns(2 of 12);
+      @include fill-parent;
       .arrow {
+        @include span-columns(0.5 of 3);
         display: block;
-        margin-left: auto;
-        margin-right: auto;
-        width: 40%;
+        -webkit-transform: rotate(90deg);
       }
       .driver-name {
-        @include fill-parent;
-        text-align: center;
+        @include span-columns(2 of 3);
       }
-    }
-    .destination {
-      @include omega;
     }
   @include clearfix;
   }
   .winner {
     @include fill-parent;
-padding-top: $gutter;
+    padding-top: $gutter;
     text-align: center;
   }
-  @include clearfix;
+}
 }
 
 .map {
-  @include fill-parent;
-  height: 32.5em;
-  margin-top: 3.313em;
-  margin-bottom: 3.313em;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
+  @include span-columns(9 of 12);
+  @include omega;
+  height: 35em;
 }
