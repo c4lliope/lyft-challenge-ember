@@ -1,11 +1,11 @@
 <div class="route">
   <div class="inputs">
-    {{render "location" origin}}
+    {{input value=origin action="updateMap" class="location origin" type="text" placeholder="Origin"}}
     <div class="middle">
       <img class="arrow" src="assets/arrow.svg">
       {{input value=driverName class="driver-name"}}
     </div>
-    {{render "location" destination}}
+    {{input value=destination action="updateMap" class="location destination" type="text" placeholder="Destination"}}
   </div>
   {{#if winner}}
   <div class="winner">{{winnerText}}</div>

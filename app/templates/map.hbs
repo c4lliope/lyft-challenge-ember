@@ -45,15 +45,14 @@
   var latLngBounds;
   var gelocatorRequestsRemaining;
 
-  function centerMap(points) {
+  function centerMap(locations) {
     latLngBounds = new google.maps.LatLngBounds();
     gelocatorRequestsRemaining = 4;
 
     for (var i = 0; i < 4; i++) {
-      var point = points[i];
-      var googlePoint;
+      var location = locations[i];
       var geocoder = new google.maps.Geocoder();
-      var request = { address: point.get('address') };
+      var request = { address: location };
 
       geocoder.geocode(request, function(result, status) {
         latLngBounds.extend(result[0].geometry.location);

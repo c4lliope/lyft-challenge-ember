@@ -38,34 +38,33 @@ input {
 
 .routes {
   @include span-columns(3 of 12);
-.route {
-  @include fill-parent;
-  .inputs {
+  .route {
     @include fill-parent;
-    input { margin-left: 0; }
-    .location {
+    .inputs {
       @include fill-parent;
-      .address { @include fill-parent; }
+      input { margin-left: 0; }
+      .location {
+        @include fill-parent;
+      }
+      .middle {
+        @include fill-parent;
+        .arrow {
+          @include span-columns(0.5 of 3);
+          display: block;
+          -webkit-transform: rotate(90deg);
+        }
+        .driver-name {
+          @include span-columns(2 of 3);
+        }
+      }
+    @include clearfix;
     }
-    .middle {
+    .winner {
       @include fill-parent;
-      .arrow {
-        @include span-columns(0.5 of 3);
-        display: block;
-        -webkit-transform: rotate(90deg);
-      }
-      .driver-name {
-        @include span-columns(2 of 3);
-      }
+      padding-top: $gutter;
+      text-align: center;
     }
-  @include clearfix;
   }
-  .winner {
-    @include fill-parent;
-    padding-top: $gutter;
-    text-align: center;
-  }
-}
 }
 
 .map {

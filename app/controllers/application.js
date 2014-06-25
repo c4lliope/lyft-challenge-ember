@@ -4,13 +4,13 @@ export default Ember.Controller.extend({
   actions: {
              updateMap: function() {
                           var routeA = this.get('routeA');
-                          var origin = routeA.get('origin').get('address');
-                          var destination = routeA.get('destination').get('address');
+                          var origin = routeA.get('origin');
+                          var destination = routeA.get('destination');
                           displayRoute(directionsDisplayA, origin, destination);
 
                           var routeB = this.get('routeB');
-                          var origin = routeB.get('origin').get('address');
-                          var destination = routeB.get('destination').get('address');
+                          var origin = routeB.get('origin');
+                          var destination = routeB.get('destination');
                           displayRoute(directionsDisplayB, origin, destination);
 
                           this.send('arbitrate');
@@ -31,10 +31,10 @@ export default Ember.Controller.extend({
                     routeA.set('winner', false);
                     routeB.set('winner', false);
 
-                    var originA = routeA.get('origin').get('address');
-                    var destinationA = routeA.get('destination').get('address');
-                    var originB = routeB.get('origin').get('address');
-                    var destinationB = routeB.get('destination').get('address');
+                    var originA = routeA.get('origin');
+                    var destinationA = routeA.get('destination');
+                    var originB = routeB.get('origin');
+                    var destinationB = routeB.get('destination');
 
                     var service = new google.maps.DistanceMatrixService();
                     service.getDistanceMatrix(
@@ -84,11 +84,11 @@ export default Ember.Controller.extend({
                                 var loser = this.get('route'+loserLetter);
 
                                 displayRoute(directionsDisplayPickup,
-                                    winner.get('origin').get('address'),
-                                    loser.get('origin').get('address'));
+                                    winner.get('origin'),
+                                    loser.get('origin'));
                                 displayRoute(directionsDisplayDropoff,
-                                    loser.get('destination').get('address'),
-                                    winner.get('destination').get('address'));
+                                    loser.get('destination'),
+                                    winner.get('destination'));
 
                                 this.send('centerMapOnRoutePoints');
                               },
