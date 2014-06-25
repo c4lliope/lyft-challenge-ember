@@ -8,10 +8,16 @@
   var map;
 
   function initialize() {
-    directionsDisplayA = new google.maps.DirectionsRenderer({preserveViewport: true, polylineOptions: { strokeColor: '#FF0000' }})
-    directionsDisplayB = new google.maps.DirectionsRenderer({preserveViewport: true, polylineOptions: { strokeColor: '#0000FF' }})
-    directionsDisplayPickup = new google.maps.DirectionsRenderer({preserveViewport: true, suppressMarkers: true, polylineOptions: { strokeColor: '#00FF00', opacity: 0.5 }})
-    directionsDisplayDropoff = new google.maps.DirectionsRenderer({preserveViewport: true, suppressMarkers: true, polylineOptions: { strokeColor: '#00FF00', opacity: 0.5 }})
+    directionsDisplayA = new google.maps.DirectionsRenderer({preserveViewport: true,
+      polylineOptions: { strokeColor: 'rgb(0, 180, 174)',
+        strokeWeight: 8 }})
+    directionsDisplayB = new google.maps.DirectionsRenderer({preserveViewport: true,
+      polylineOptions: { strokeColor: 'rgb(229, 99, 133)',
+        strokeWeight: 8 }})
+    directionsDisplayPickup = new google.maps.DirectionsRenderer({preserveViewport: true,
+      suppressMarkers: true})
+    directionsDisplayDropoff = new google.maps.DirectionsRenderer({preserveViewport: true,
+      suppressMarkers: true})
     var sanFran = new google.maps.LatLng(37.802139, -122.41874);
     var mapOptions = {
       zoom: 12,
