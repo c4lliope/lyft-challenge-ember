@@ -42,8 +42,8 @@
       if (status == google.maps.DirectionsStatus.OK) {
         directionsDisplay.setDirections(result);
         } else {
-        /* TODO Gracefully handle errors */
-        alert('ohno: ' + start + " to " + end);
+        alert("Right now, we can only make a couple requests to google each second. " +
+        "Chill for a couple seconds, and everything should go back to normal.");
       }
     });
   }
