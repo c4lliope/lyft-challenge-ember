@@ -102,8 +102,8 @@ export default Ember.Controller.extend({
                            var difference_miles = Number((difference / 1609.34).toFixed(1));
 
                            var message = "If " + winner.get('driverName') +
-                             " picks up " + loser.get('driverName') +
-                             ", the drive will be " + difference_miles + " miles shorter."
+                             " gives " + loser.get('driverName') + " a lift, " +
+                             "the drive will be " + difference_miles + " miles shorter."
                              console.log(message);
                            winner.set('winnerText', message);
                          }
