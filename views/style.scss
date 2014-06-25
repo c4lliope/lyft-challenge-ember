@@ -111,3 +111,8 @@ input, label {
   @include omega;
   height: 35em;
 }
+
+.description {
+  float: right;
+  padding-top: $gutter;
+}
