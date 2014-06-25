@@ -82,6 +82,14 @@ input {
       color: $white;
     }
   }
+  .update {
+    @include fill-parent;
+    font-size: 1em;
+    border: none;
+    background-color: $green;
+    padding: $gutter;
+    color: #FFFFFF;
+  }
 }
 
 .map {

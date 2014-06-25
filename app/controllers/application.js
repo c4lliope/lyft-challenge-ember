@@ -79,6 +79,7 @@ export default Ember.Controller.extend({
                       }
                     }
                   },
+
        drawPickupDropoffLegs: function(winnerLetter, loserLetter) {
                                 var winner = this.get('route'+winnerLetter);
                                 var loser = this.get('route'+loserLetter);
@@ -92,6 +93,7 @@ export default Ember.Controller.extend({
 
                                 this.send('centerMapOnRoutePoints');
                               },
+
        setWinnerMessage: function(winnerLetter, loserLetter, winnerDistance, loserDistance) {
                            var winner = this.get('route'+winnerLetter);
                            var loser = this.get('route'+loserLetter);
