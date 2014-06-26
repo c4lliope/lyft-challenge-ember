@@ -27,6 +27,12 @@ body {
     display: table;
     clear: both; }
 
+a {
+  text-decoration: none;
+  color: #00b4ae; }
+  a:hover {
+    color: #000; }
+
 input, label {
   background-color: #f9f4eb;
   font-family: 'Adelle Sans';
@@ -148,14 +154,10 @@ input, label {
   .sidebar ul {
     list-style: none;
     padding-left: 0; }
+    .sidebar ul a {
+      font-size: 1.6em; }
     .sidebar ul li {
       margin-top: 1.618em; }
-      .sidebar ul li a {
-        font-size: 1.2em;
-        text-decoration: none;
-        color: #000; }
-        .sidebar ul li a:hover {
-          color: #00b4ae; }
 
 #letter {
   font-family: 'Museo Slab';

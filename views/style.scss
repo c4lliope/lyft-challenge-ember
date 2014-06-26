@@ -28,6 +28,14 @@ body {
   @include outer-container;
 }
 
+a {
+  text-decoration: none;
+  color: $green;
+  &:hover {
+    color: #000;
+  }
+}
+
 input, label {
   background-color: $white;
   font-family: 'Adelle Sans';
@@ -130,18 +138,11 @@ input, label {
   }
   margin-top: $gutter;
   ul {
+    a { font-size: 1.6em; }
     list-style: none;
     padding-left: 0;
     li {
       margin-top: $gutter;
-      a {
-        font-size: 1.2em;
-        text-decoration: none;
-        color: #000;
-        &:hover {
-          color: $green;
-        }
-      }
     }
   }
 }
