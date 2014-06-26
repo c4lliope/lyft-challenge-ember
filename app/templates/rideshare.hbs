@@ -1,0 +1,19 @@
+<div class="header">
+  <div class="container">
+    <span class="site-name">Rideshare Resolver</span>
+  </div>
+</div>
+
+<div class="container">
+  <div class="routes">
+    {{ render "route" routeA }}
+    {{ render "route" routeB }}
+
+    <button class="update" {{action 'updateMap'}}>Find the Best Ride</button>
+  </div>
+  {{ render "map" map }}
+
+  <div class="description">
+    Learn about the tool and get the code on <a href="https://github.com/graysonwright/lyft-challenge-ember">github</a>
+  </div>
+</div>
