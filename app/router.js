@@ -6,7 +6,7 @@ var Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('rideshare', {path: '/'});
-  this.route('letter');
+  this.route('hello');
 });
 
 export default Router;
