@@ -10,9 +10,8 @@ html, body {
 }
 
 body {
-  font: 400 1em/1.38 Helvetica;
+  font: 400 1em/1.38 'Adelle Sans';
   background-color: $white;
-  font-family: 'Adelle Sans';
 }
 
 .header {
@@ -115,4 +114,45 @@ input, label {
 .description {
   float: right;
   padding-top: $gutter;
+}
+
+.sidebar {
+  font-family: 'Museo Slab';
+  text-align: center;
+  h1 {
+    font-family: Bree-Regular;
+    color: $green;
+  }
+  @include span-columns(3 of 12);
+  img {
+    display: block;
+    @include fill-parent;
+  }
+  margin-top: $gutter;
+  ul {
+    list-style: none;
+    padding-left: 0;
+    li {
+      margin-top: $gutter;
+      a {
+        font-size: 1.2em;
+        text-decoration: none;
+        color: #000;
+        &:hover {
+          color: $green;
+        }
+      }
+    }
+  }
+}
+#letter {
+  font-family: 'Museo Slab';
+  font-size: 1.2em;
+  font-weight: 300;
+  margin-top: $gutter;
+  margin-bottom: $gutter;
+  @include span-columns(9 of 12);
+  background-color: #FFFFFF;
+  box-shadow: 4px 4px 2px #CCC;
+  padding: $gutter;
 }
