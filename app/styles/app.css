@@ -7,7 +7,7 @@ html, body {
   margin: 0; }
 
 body {
-  font: 400 1em/1.38 'Adelle Sans';
+  font: 400 1em/1.38 'adelle-sans';
   background-color: #f9f4eb; }
 
 .header {
@@ -16,7 +16,7 @@ body {
   color: #FFFFFF;
   margin-bottom: 1.618em; }
   .header .site-name {
-    font: normal 2.375em/1.38 Bree-Regular; }
+    font: normal 2.375em/1.38 'bree'; }
 
 .container {
   max-width: 68em;
@@ -35,7 +35,7 @@ a {
 
 input, label {
   background-color: #f9f4eb;
-  font-family: 'Adelle Sans';
+  font-family: 'adelle-sans';
   font-size: 1em;
   border: none;
   display: block;
@@ -136,7 +136,7 @@ input, label {
   padding-top: 1.618em; }
 
 .sidebar {
-  font-family: 'Museo Slab';
+  font-family: 'museo-slab';
   text-align: center;
   float: left;
   display: block;
@@ -144,7 +144,7 @@ input, label {
   width: 23.23176%;
   margin-top: 1.618em; }
   .sidebar h1 {
-    font-family: Bree-Regular;
+    font-family: 'bree';
     color: #00b4ae; }
   .sidebar:last-child {
     margin-right: 0; }
@@ -160,7 +160,7 @@ input, label {
       margin-top: 1.618em; }
 
 #letter {
-  font-family: 'Museo Slab';
+  font-family: 'museo-slab';
   font-size: 1.2em;
   font-weight: 300;
   margin-top: 1.618em;
