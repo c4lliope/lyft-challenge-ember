@@ -7,9 +7,8 @@ html, body {
   margin: 0; }
 
 body {
-  font: 400 1em/1.38 Helvetica;
-  background-color: #f9f4eb;
-  font-family: 'Adelle Sans'; }
+  font: 400 1em/1.38 'Adelle Sans';
+  background-color: #f9f4eb; }
 
 .header {
   width: 100%;
@@ -27,6 +26,12 @@ body {
     content: "";
     display: table;
     clear: both; }
+
+a {
+  text-decoration: none;
+  color: #00b4ae; }
+  a:hover {
+    color: #000; }
 
 input, label {
   background-color: #f9f4eb;
@@ -129,3 +134,43 @@ input, label {
 .description {
   float: right;
   padding-top: 1.618em; }
+
+.sidebar {
+  font-family: 'Museo Slab';
+  text-align: center;
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 23.23176%;
+  margin-top: 1.618em; }
+  .sidebar h1 {
+    font-family: Bree-Regular;
+    color: #00b4ae; }
+  .sidebar:last-child {
+    margin-right: 0; }
+  .sidebar img {
+    display: block;
+    width: 100%; }
+  .sidebar ul {
+    list-style: none;
+    padding-left: 0; }
+    .sidebar ul a {
+      font-size: 1.6em; }
+    .sidebar ul li {
+      margin-top: 1.618em; }
+
+#letter {
+  font-family: 'Museo Slab';
+  font-size: 1.2em;
+  font-weight: 300;
+  margin-top: 1.618em;
+  margin-bottom: 1.618em;
+  float: left;
+  display: block;
+  margin-right: 2.35765%;
+  width: 74.41059%;
+  background-color: #FFFFFF;
+  box-shadow: 4px 4px 2px #CCC;
+  padding: 1.618em; }
+  #letter:last-child {
+    margin-right: 0; }
