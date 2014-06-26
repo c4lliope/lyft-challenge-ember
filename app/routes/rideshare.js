@@ -5,7 +5,7 @@ export default Ember.Route.extend({
                      controller.set('routeA', this.store.createRecord('route', {
                        driverName: 'Ashley',
                        origin: 'Sutro Heights Park, SF',
-                       destination: 'Golden Gate Bridge, SF',
+                       destination: 'Presidio Blvd, SF',
                        iconPath: "assets/woman.svg"
                      }));
                      controller.set('routeB', this.store.createRecord('route', {
