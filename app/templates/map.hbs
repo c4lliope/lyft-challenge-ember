@@ -42,8 +42,9 @@
       if (status == google.maps.DirectionsStatus.OK) {
         directionsDisplay.setDirections(result);
         } else {
-        alert("Right now, we can only make a couple requests to google each second. " +
-        "Chill for a couple seconds, and everything should go back to normal.");
+        alert("Hrm... Google had a problem finding directions. Check over " +
+        "your addresses, make sure you specify the city, and if everything's " +
+        "correct just wait a little while and try again.");
       }
     });
   }
